@@ -1,21 +1,11 @@
 def two_sum(nums, target):
-    """
-    Returns the indices of the two numbers in `nums` that add up to `target`.
-    
-    Args:
-        nums (List[int]): List of integers.
-        target (int): Target sum.
-    
-    Returns:
-        List[int]: Indices of the two numbers.
-    """
     num_map = {}  # To store number and its index
     
     for i, num in enumerate(nums):
         complement = target - num
         if complement in num_map:
             return [num_map[complement], i]
-        num_map[num] = i
+        num_map[num] = 
     
     return []  # If no solution is found (shouldn't happen as per problem statement)
 
