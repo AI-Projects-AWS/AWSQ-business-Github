@@ -28,6 +28,15 @@ The solution uses a hash map approach with O(n) time complexity and O(n) space c
 
 This approach is significantly more efficient than the brute force method (which would be O(n²)) as it requires only a single pass through the array.
 
+## Extended Functionality: Finding All Pairs
+
+In addition to the original `two_sum` function that returns the first pair found, this repository also includes a `two_sum_all_pairs` function that returns all pairs of indices where the corresponding numbers add up to the target.
+
+The extended solution maintains the same efficient approach:
+1. Build a hash map of values to their indices (handling duplicates)
+2. Iterate through the array and find all pairs that add up to the target
+3. Return a list of all unique pairs found
+
 ## Installation
 
 ### Prerequisites
@@ -63,6 +72,18 @@ nums = [1, 2, 3, 4]
 target = 10
 result = two_sum(nums, target)
 print(result)  # Output: [] (empty list)
+```
+
+### Finding All Pairs
+
+```python
+from two_sum import two_sum_all_pairs
+
+# Example: Finding all pairs that add up to the target
+nums = [2, 7, 11, 15, 2, 7]
+target = 9
+result = two_sum_all_pairs(nums, target)
+print(result)  # Output: [[0, 1], [4, 5]] (indices of all pairs of 2 and 7)
 ```
 
 ### Error Handling
@@ -103,6 +124,25 @@ def two_sum(nums: List[int], target: int) -> List[int]:
     """
 ```
 
+```python
+def two_sum_all_pairs(nums: List[int], target: int) -> List[List[int]]:
+    """
+    Returns all pairs of indices of the numbers in `nums` that add up to `target`.
+    
+    Args:
+        nums (List[int]): List of integers.
+        target (int): Target sum.
+    
+    Returns:
+        List[List[int]]: List of index pairs where each pair contains the indices of 
+        two numbers that add up to the target. Returns an empty list if no solution is found.
+        
+    Raises:
+        TypeError: If nums is not a list or target is not an integer.
+        ValueError: If nums is empty or contains non-integer values.
+    """
+```
+
 ## Running Tests
 
 The repository includes comprehensive unit tests covering various scenarios including:
@@ -121,6 +161,12 @@ Or to run a specific test:
 
 ```bash
 python -m unittest test_two_sum.TestTwoSum.test_basic_case
+```
+
+To run tests for the extended functionality:
+
+```bash
+python -m unittest test_two_sum.TestTwoSumAllPairs
 ```
 
 ## Contributing
