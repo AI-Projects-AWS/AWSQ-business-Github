@@ -1,0 +1,17 @@
+Name: SimpleWorkflow
+SchemaVersion: "1.0"
+
+Triggers:
+  - Type: Push
+    Branches:
+      - main
+
+Actions:
+  HelloWorld:
+    Identifier: aws/managed-test@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Configuration:
+      Steps:
+        - Run: echo "👋 Hello, CodeCatalyst!"
