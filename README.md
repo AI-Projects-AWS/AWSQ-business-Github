@@ -1,24 +1,35 @@
-# Two Sum Problem Solution
+# Two Sum and Three Sum Problem Solutions
 
-This repository contains a Python implementation of the "Two Sum" problem, a common coding interview question. The implementation provides an efficient solution with comprehensive error handling and test coverage.
+This repository contains implementations of the "Two Sum" problem in Python and the "Three Sum" problem in Java, both common coding interview questions. The implementations provide efficient solutions with comprehensive error handling and test coverage.
 
 ## Repository Structure
 
 The repository consists of the following files:
 
-- **two_sum.py**: Contains the main implementation of the Two Sum algorithm
+- **two_sum.py**: Contains the main implementation of the Two Sum algorithm in Python
 - **test_two_sum.py**: Comprehensive unit tests for the Two Sum function
+- **three_sum.java**: Contains the implementation of the Three Sum algorithm in Java
 - **README.md**: Documentation about the repository and how to use the code
 
 ## Problem Description
+
+### Two Sum Problem
 
 Given an array of integers `nums` and an integer `target`, return the indices of the two numbers such that they add up to `target`.
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
+### Three Sum Problem
+
+Given an array of integers `nums`, find all unique triplets in the array which gives the sum of zero.
+
+The solution set must not contain duplicate triplets.
+
 ## Solution Approach
 
-The solution uses a hash map approach with O(n) time complexity and O(n) space complexity:
+### Two Sum Solution
+
+The Two Sum solution uses a hash map approach with O(n) time complexity and O(n) space complexity:
 
 1. Iterate through the array once
 2. For each element, check if its complement (target - current element) exists in the hash map
@@ -27,6 +38,18 @@ The solution uses a hash map approach with O(n) time complexity and O(n) space c
 5. If no solution is found after iterating through the array, return an empty list
 
 This approach is significantly more efficient than the brute force method (which would be O(n²)) as it requires only a single pass through the array.
+
+### Three Sum Solution
+
+The Three Sum solution uses a sorting and two-pointer approach with O(n²) time complexity:
+
+1. Sort the input array (O(n log n))
+2. Iterate through the array with a fixed pointer (i)
+3. For each position i, use two pointers (left and right) to find pairs that sum to the negative of nums[i]
+4. Skip duplicate values to avoid duplicate triplets
+5. Return all unique triplets that sum to zero
+
+This approach is more efficient than the brute force method (which would be O(n³)) and handles the requirement of not having duplicate triplets in the result.
 
 ## Extended Functionality: Finding All Pairs
 
@@ -41,22 +64,23 @@ The extended solution maintains the same efficient approach:
 
 ### Prerequisites
 
-- Python 3.6 or higher
+- Python 3.6 or higher (for Two Sum)
+- Java 8 or higher (for Three Sum)
 
 ### Cloning the Repository
 
 To clone this repository to your local machine, run:
 
 ```bash
-git clone https://github.com/yourusername/two-sum-solution.git
-cd two-sum-solution
+git clone https://github.com/yourusername/sum-problems-solution.git
+cd sum-problems-solution
 ```
 
 No additional dependencies are required to run the code.
 
 ## Usage
 
-### Basic Usage
+### Two Sum Usage
 
 ```python
 from two_sum import two_sum
@@ -74,7 +98,7 @@ result = two_sum(nums, target)
 print(result)  # Output: [] (empty list)
 ```
 
-### Finding All Pairs
+### Finding All Pairs with Two Sum
 
 ```python
 from two_sum import two_sum_all_pairs
@@ -84,6 +108,42 @@ nums = [2, 7, 11, 15, 2, 7]
 target = 9
 result = two_sum_all_pairs(nums, target)
 print(result)  # Output: [[0, 1], [4, 5]] (indices of all pairs of 2 and 7)
+```
+
+### Three Sum Usage
+
+```java
+// Compile the Java file
+javac three_sum.java
+
+// Run the program
+java three_sum
+```
+
+Example output:
+```
+Example 1 Input: [-1, 0, 1, 2, -1, -4]
+Output: [[-1, -1, 2], [-1, 0, 1]]
+
+Example 2 Input: [0, 0, 0]
+Output: [[0, 0, 0]]
+
+Example 3 Input: [-2, 0, 1, 1, 2]
+Output: [[-2, 0, 2], [-2, 1, 1]]
+```
+
+To use the Three Sum implementation in your own Java code:
+
+```java
+import java.util.*;
+
+public class YourClass {
+    public static void main(String[] args) {
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> result = three_sum.threeSum(nums);
+        System.out.println(result);
+    }
+}
 ```
 
 ### Error Handling
@@ -104,6 +164,8 @@ except ValueError as e:
 ```
 
 ## Function Documentation
+
+### Two Sum Functions
 
 ```python
 def two_sum(nums: List[int], target: int) -> List[int]:
@@ -143,7 +205,21 @@ def two_sum_all_pairs(nums: List[int], target: int) -> List[List[int]]:
     """
 ```
 
+### Three Sum Function
+
+```java
+/**
+ * Finds all unique triplets in the array which sum to zero.
+ * 
+ * @param nums The input array of integers
+ * @return A list of lists, where each inner list contains three integers that sum to zero
+ */
+public static List<List<Integer>> threeSum(int[] nums)
+```
+
 ## Running Tests
+
+### Testing Two Sum Implementation
 
 The repository includes comprehensive unit tests covering various scenarios including:
 - Basic functionality
@@ -168,6 +244,17 @@ To run tests for the extended functionality:
 ```bash
 python -m unittest test_two_sum.TestTwoSumAllPairs
 ```
+
+### Testing Three Sum Implementation
+
+The Three Sum implementation includes example test cases in the main method. To run these tests:
+
+```bash
+javac three_sum.java
+java three_sum
+```
+
+This will compile and run the Java program, which includes several test cases demonstrating the functionality of the Three Sum solution.
 
 ## Contributing
 
