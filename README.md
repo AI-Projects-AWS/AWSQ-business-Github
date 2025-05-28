@@ -8,6 +8,9 @@ The repository consists of the following files:
 
 - **two_sum.py**: Contains the main implementation of the Two Sum algorithm
 - **test_two_sum.py**: Comprehensive unit tests for the Two Sum function
+- **three_sum.java**: Java implementation of the Three Sum problem
+- **security_scanner.py**: Security scanner for code repositories
+- **test_security_scanner.py**: Unit tests for the security scanner
 - **README.md**: Documentation about the repository and how to use the code
 
 ## Problem Description
@@ -36,6 +39,53 @@ The extended solution maintains the same efficient approach:
 1. Build a hash map of values to their indices (handling duplicates)
 2. Iterate through the array and find all pairs that add up to the target
 3. Return a list of all unique pairs found
+
+## Security Scanner
+
+The repository includes a security scanner that can identify potential security issues in Python and Java code. The scanner checks for common security vulnerabilities such as:
+
+- Use of dangerous functions (eval, exec)
+- Hardcoded credentials
+- Insecure file operations
+- Use of deprecated/insecure methods
+- Potential for denial of service
+
+### Using the Security Scanner
+
+To scan your code for security issues:
+
+```bash
+python security_scanner.py -p /path/to/your/code
+```
+
+This will generate:
+- A JSON report (security_report.json)
+- An HTML report (security_report.html)
+- A log file (security_scan.log)
+- A summary in the console
+
+#### Command Line Options
+
+```
+usage: security_scanner.py [-h] [-p PATH] [-j JSON] [-H HTML] [-v]
+
+Security Scanner for Code Repositories
+
+options:
+  -h, --help            show this help message and exit
+  -p PATH, --path PATH  Path to the repository to scan
+  -j JSON, --json JSON  Path to the JSON report output file
+  -H HTML, --html HTML  Path to the HTML report output file
+  -v, --verbose         Enable verbose output
+```
+
+### Running Security Scanner Tests
+
+To run the tests for the security scanner:
+
+```bash
+python -m unittest test_security_scanner.py
+```
 
 ## Installation
 
